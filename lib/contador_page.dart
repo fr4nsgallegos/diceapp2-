@@ -6,151 +6,76 @@ class ContadorPage extends StatefulWidget {
 }
 
 class _ContadorPageState extends State<ContadorPage> {
-  List<int> contadores = [0, 0, 0, 0, 0];
-  int totalContador = 0;
+  int contador1 = 0;
+  int contador2 = 0;
+  int contador3 = 0;
+  int contador4 = 0;
+  int contador5 = 0;
 
-  void incrementar(int index) {
-    setState(() {
-      contadores[index]++;
-      totalContador++;
-    });
-  }
-
-  void reset(int index) {
-    setState(() {
-      contadores[index] = 0;
-      totalContador = 0;
-    });
+  Widget contadores(String title, int variable, VoidCallback onPressed) {
+    return Column(
+      children: [
+        Text(title),
+        Text(variable.toString()),
+        ElevatedButton(onPressed: onPressed, child: Text("add"))
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
         floatingActionButton: FloatingActionButton(
+          child: Text("RESET"),
           onPressed: () {
-            for (var i = 0; i < 5; i++) {
-              reset(i);
-            }
+            contador1 = 0;
+            contador2 = 0;
+            contador3 = 0;
+            contador4 = 0;
+            contador5 = 0;
+            setState(() {});
           },
           backgroundColor: Colors.red,
         ),
-        body: Center(
-            child: Column(
+        appBar: AppBar(),
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  totalContador.toString(),
-                  style: TextStyle(fontSize: 50, color: Colors.yellow),
-                )
-              ],
+            Text(
+              ' ${contador1 + contador2 + contador3 + contador4 + contador5}',
+              style: TextStyle(fontSize: 50),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Contador 1",
-                        style: TextStyle(fontSize: 22, color: Colors.yellow)),
-                    Text(contadores[0].toString(),
-                        style: TextStyle(color: Colors.yellow)),
-                    ElevatedButton(
-                      onPressed: () {
-                        incrementar(0);
-                      },
-                      child: Text("add"),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Contador 2",
-                        style: TextStyle(fontSize: 22, color: Colors.yellow)),
-                    Text(contadores[1].toString(),
-                        style: TextStyle(color: Colors.yellow)),
-                    ElevatedButton(
-                      onPressed: () {
-                        incrementar(1);
-                      },
-                      child: Text(
-                        "add",
-                      ),
-                    ),
-                  ],
-                )
+                contadores("Contador 1", contador1, () {
+                  contador1++;
+                  setState(() {});
+                }),
+                contadores("Contador 2", contador2, () {
+                  contador2++;
+                  setState(() {});
+                }),
               ],
             ),
             Divider(),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  children: [
-                    Text("Contador 3",
-                        style: TextStyle(fontSize: 22, color: Colors.yellow)),
-                    Text(contadores[2].toString(),
-                        style: TextStyle(color: Colors.yellow)),
-                    ElevatedButton(
-                      onPressed: () {
-                        incrementar(2);
-                      },
-                      child: Text("add"),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Column(
-                  children: [
-                    Text("Contador 4",
-                        style: TextStyle(fontSize: 22, color: Colors.yellow)),
-                    Text(contadores[3].toString(),
-                        style: TextStyle(color: Colors.yellow)),
-                    ElevatedButton(
-                      onPressed: () {
-                        incrementar(3);
-                      },
-                      child: Text("add"),
-                    ),
-                  ],
-                )
+                contadores("Contador 3", contador3, () {
+                  contador3++;
+                  setState(() {});
+                }),
+                contadores("Contador 4", contador4, () {
+                  contador4++;
+                  setState(() {});
+                }),
               ],
-            ),
-            SizedBox(
-              width: 30,
-            ),
-            Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    Text("Contador 5",
-                        style: TextStyle(fontSize: 22, color: Colors.yellow)),
-                    Text(contadores[4].toString(),
-                        style: TextStyle(color: Colors.yellow)),
-                    ElevatedButton(
-                      onPressed: () {
-                        incrementar(4);
-                      },
-                      child: Text("add"),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            )
           ],
-        )),
+        ),
       ),
     );
   }
