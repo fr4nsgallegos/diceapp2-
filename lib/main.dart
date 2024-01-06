@@ -17,6 +17,16 @@ class _MainPageState extends State<MainPage> {
   int x = 100;
   int y = 200;
 
+  //FUNCIÓN QUE AUMENTE EN 100 A CIERTA VARIABLE
+  int inc100(int variable) {
+    return (variable + 100);
+  }
+
+  void sumar100() {
+    x += 100;
+    print(x);
+  }
+
   @override
   Widget build(BuildContext context) {
     y++;
@@ -34,9 +44,14 @@ class _MainPageState extends State<MainPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  x = 300;
+                  //MÉTODO 2
+                  sumar100();
                   setState(() {});
-                  print(x);
+
+                  //MÉTODO 1
+                  // x = inc100(x);
+                  // print(x);
+                  // setState(() {});
                 },
                 child: Text("Cambiar valor"),
               ),
