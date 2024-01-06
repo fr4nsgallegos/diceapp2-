@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: ContadorPage(),
+      home: MainPage(),
     ),
   );
 }
@@ -63,17 +63,12 @@ class _MainPageState extends State<MainPage> {
                 child: Text("Cambiar valor"),
               ),
               Container(
-                height: 200,
-                color: Colors.red,
-                child: Column(
-                  children: [
-                    Text(
-                      y.toString(),
-                      style: TextStyle(fontSize: 50),
-                    ),
-                  ],
-                ),
-              )
+                child: Image.asset("assets/images/imagen1.jpeg"),
+              ),
+              Container(
+                child: Image.network(
+                    "https://cdn.pixabay.com/photo/2018/01/14/23/05/ecommerce-3082813_1280.jpg"),
+              ),
             ],
           ),
         ),
