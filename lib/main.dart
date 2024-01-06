@@ -32,6 +32,12 @@ class _MainPageState extends State<MainPage> {
     y++;
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            print("hola");
+          },
+          backgroundColor: Colors.red,
+        ),
         appBar: AppBar(),
         body: Center(
           child: Column(
